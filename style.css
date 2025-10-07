@@ -122,17 +122,17 @@ body{
 }
 
 .idea img{
-    height: 124px;
+    height: 100px;
 }
 
 .happy{
-    height: 373px;
-    width: 340px;
+    height: 346px;
+    width: 315px;
 }
 
 .mother{
-    height: 373px;
-    width: 340px;
+    height: 346px;
+    width: 315px;
     margin-bottom: 0%;
 }
 
@@ -160,9 +160,10 @@ body{
       padding: 15px 10px;
       border-radius: 10px;
       border: 3px solid #000;
-      margin-top: 20px;
-      box-shadow: 3px 3px 0px #000;
       margin-top: 0px;
+      box-shadow: 3px 3px 0px #000;
+      margin-left: 5px;
+      margin-right: 5px;
     }
     
     
@@ -215,7 +216,7 @@ body{
 
     .button:active {
       background-color: #BFA02F;
-      transform: translate(5px,5px);
+      transform: translate(2.5px,2.5px);
     
     }
 
