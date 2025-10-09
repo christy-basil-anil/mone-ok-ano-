@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Well-being Scale</title>
+    <link rel="stylesheet" href="gstyle.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="instructions">
+            <h2>Instructions:</h2>
+            <p>The questions in this scale ask you about your feelings and thoughts during the last month. In each case, you will be asked to indicate how often you felt or thought a certain way</p>
+        </div>
+
+        <div class="progress-area">
+            <span id="progress-text">Let's Get Started!</span>
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <span id="question-number">1/10</span>
+        </div>
+
+        <div class="question-box">
+            <p id="question-text">Loading question...</p>
+        </div>
+
+        <div class="answer-options" id="answer-options">
+            </div>
+
+        <div class="navigation-buttons">
+            <button id="previous-btn" class="nav-btn previous-btn" disabled>
+                < Previous
+            </button>
+            </div>
+
+        <p class="powered-by">Powered by IDEAGORA</p>
+    </div>
+
+    <script src="gscript.js"></script>
+</body>
+</html>

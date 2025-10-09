@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Day Amplitude Test</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.15"/><circle cx="20" cy="80" r="0.5" fill="white" opacity="0.15"/><circle cx="80" cy="30" r="0.5" fill="white" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.15),
+                0 0 0 1px rgba(255,255,255,0.1) inset;
+            max-width: 650px;
+            width: 90%;
+            padding: 50px;
+            margin: 20px;
+            position: relative;
+            transform: translateY(0);
+            animation: containerFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes containerFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '✨';
+            position: absolute;
+            top: -20px;
+            left: 20%;
+            font-size: 2em;
+            animation: sparkle 3s ease-in-out infinite;
+        }
+
+        .header::after {
+            content: '🌟';
+            position: absolute;
+            top: -10px;
+            right: 25%;
+            font-size: 1.5em;
+            animation: sparkle 3s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+        }
+
+        .header h1 {
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .subtitle {
+            color: #5a67d8;
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .disclaimer {
+            background: #f7fafc;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+            color: #2d3748;
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .question-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .question {
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            line-height: 1.4;
+            position: relative;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            background: rgba(255,255,255,0.8);
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .option:hover::before {
+            left: 100%;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .option.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .option.selected::after {
+            content: '✓';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 20px;
+            margin: 25px 0;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                rgba(255,255,255,0.1) 0%, 
+                rgba(255,255,255,0.3) 50%, 
+                rgba(255,255,255,0.1) 100%);
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            background-size: 200% 100%;
+            width: 0%;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 20px;
+            position: relative;
+            animation: progressGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes progressGlow {
+            0%, 100% { box-shadow: 0 0 5px rgba(102, 126, 234, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.8), 0 0 30px rgba(118, 75, 162, 0.4); }
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1em;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #5a67d8, #6b46c1);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.8);
+            color: #5a67d8;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.9);
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn:disabled::before {
+            display: none;
+        }
+
+        .results {
+            display: none;
+            text-align: center;
+            animation: resultsAppear 0.8s ease-out;
+        }
+
+        @keyframes resultsAppear {
+            0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px auto;
+            font-size: 2.2em;
+            font-weight: bold;
+            color: white;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: scoreFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes scoreFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+
+        .score-circle::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.3), transparent, rgba(255,255,255,0.3));
+            animation: scoreGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes scoreGlow {
+            0%, 100% { opacity: 0.5; transform: rotate(0deg); }
+            50% { opacity: 1; transform: rotate(180deg); }
+        }
+
+        .score-low { 
+            background: linear-gradient(135deg, #48bb78, #38a169);
+        }
+        .score-medium { 
+            background: linear-gradient(135deg, #ed8936, #dd6b20);
+        }
+        .score-high { 
+            background: linear-gradient(135deg, #f56565, #e53e3e);
+        }
+
+        .result-text {
+            font-size: 1.2em;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        .recommendations {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .recommendations h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+
+        .recommendations ul {
+            color: #4a5568;
+            line-height: 1.8;
+        }
+
+        .restart-btn {
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .options {
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 Mental Health Day Amplitude Test</h1>
+            <div class="subtitle">
+                A gentle self-reflection tool to help you check in with your mental well-being
+            </div>
+            <div class="disclaimer">
+                <strong>Important:</strong> This is not a diagnostic tool. It's designed for self-reflection only. If you're experiencing persistent mental health concerns, please consider speaking with a healthcare professional.
+            </div>
+        </div>
+
+        <div id="quiz-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+            
+            <div id="question-display"></div>
+            
+            <div class="navigation">
+                <button class="btn btn-secondary" id="prev-btn" onclick="previousQuestion()" disabled>Previous</button>
+                <button class="btn btn-primary" id="next-btn" onclick="nextQuestion()" disabled>Next</button>
+            </div>
+        </div>
+
+        <div class="results" id="results-container">
+            <h2>Your Mental Health Amplitude</h2>
+            <div class="score-circle" id="score-circle">
+                <span id="score-display"></span>
+            </div>
+            <div class="result-text" id="result-text"></div>
+            <div class="recommendations" id="recommendations"></div>
+            <button class="btn btn-primary restart-btn" onclick="restartQuiz()">Take Test Again</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "How would you describe your energy levels over the past week?",
+                options: [
+                    { text: "High energy, feeling motivated and active", value: 1 },
+                    { text: "Normal energy, managing daily tasks well", value: 2 },
+                    { text: "Lower energy, but still functioning", value: 3 },
+                    { text: "Very low energy, struggling with basic tasks", value: 4 }
+                ]
+            },
+            {
+                question: "How has your sleep been recently?",
+                options: [
+                    { text: "Sleeping well, feeling rested", value: 1 },
+                    { text: "Mostly good sleep with occasional issues", value: 2 },
+                    { text: "Some difficulty sleeping or staying asleep", value: 3 },
+                    { text: "Significant sleep problems affecting daily life", value: 4 }
+                ]
+            },
+            {
+                question: "How are you managing stress and daily challenges?",
+                options: [
+                    { text: "Handling stress well with healthy coping strategies", value: 1 },
+                    { text: "Managing okay, some stress but nothing overwhelming", value: 2 },
+                    { text: "Feeling somewhat overwhelmed but getting by", value: 3 },
+                    { text: "Feeling very overwhelmed and struggling to cope", value: 4 }
+                ]
+            },
+            {
+                question: "How connected do you feel to others?",
+                options: [
+                    { text: "Feel well-connected and supported", value: 1 },
+                    { text: "Generally connected with some meaningful relationships", value: 2 },
+                    { text: "Somewhat isolated but have some support", value: 3 },
+                    { text: "Feeling quite isolated and disconnected", value: 4 }
+                ]
+            },
+            {
+                question: "How would you rate your overall mood lately?",
+                options: [
+                    { text: "Generally positive and stable", value: 1 },
+                    { text: "Mostly stable with normal ups and downs", value: 2 },
+                    { text: "More downs than ups, but manageable", value: 3 },
+                    { text: "Consistently low or very unstable", value: 4 }
+                ]
+            },
+            {
+                question: "How is your ability to concentrate and focus?",
+                options: [
+                    { text: "Focusing well, productive and clear-minded", value: 1 },
+                    { text: "Generally good focus with minor distractions", value: 2 },
+                    { text: "Some difficulty concentrating but managing", value: 3 },
+                    { text: "Significant trouble focusing on tasks", value: 4 }
+                ]
+            },
+            {
+                question: "How much are you enjoying activities you usually like?",
+                options: [
+                    { text: "Enjoying activities as much as usual", value: 1 },
+                    { text: "Still enjoying most activities, maybe less enthusiasm", value: 2 },
+                    { text: "Less interest in activities but still participating", value: 3 },
+                    { text: "Little to no interest in activities I used to enjoy", value: 4 }
+                ]
+            },
+            {
+                question: "How hopeful do you feel about the future?",
+                options: [
+                    { text: "Optimistic and looking forward to things", value: 1 },
+                    { text: "Generally hopeful with realistic expectations", value: 2 },
+                    { text: "Somewhat uncertain but not completely pessimistic", value: 3 },
+                    { text: "Feeling quite pessimistic or hopeless", value: 4 }
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let answers = [];
+
+        function displayQuestion() {
+            const question = questions[currentQuestion];
+            const questionHtml = `
+                <div class="question-container">
+                    <div class="question">${currentQuestion + 1}. ${question.question}</div>
+                    <div class="options">
+                        ${question.options.map((option, index) => `
+                            <label class="option" onclick="selectOption(${index})">
+                                <input type="radio" name="q${currentQuestion}" value="${option.value}">
+                                ${option.text}
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('question-display').innerHTML = questionHtml;
+            
+            // Restore previous answer if exists
+            if (answers[currentQuestion] !== undefined) {
+                const selectedInput = document.querySelector(`input[value="${answers[currentQuestion]}"]`);
+                if (selectedInput) {
+                    selectedInput.checked = true;
+                    selectedInput.closest('.option').classList.add('selected');
+                }
+            }
+            
+            updateProgress();
+            updateNavigation();
+        }
+
+        function selectOption(optionIndex) {
+            const question = questions[currentQuestion];
+            answers[currentQuestion] = question.options[optionIndex].value;
+            
+            // Update visual selection
+            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+            document.querySelectorAll('.option')[optionIndex].classList.add('selected');
+            
+            updateNavigation();
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+        }
+
+        function updateNavigation() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            prevBtn.disabled = currentQuestion === 0;
+            
+            if (currentQuestion === questions.length - 1) {
+                nextBtn.textContent = 'See Results';
+                nextBtn.disabled = answers[currentQuestion] === undefined;
+            } else {
+                nextBtn.textContent = 'Next';
+                nextBtn.disabled = answers[currentQuestion] === undefined;
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion();
+            }
+        }
+
+        function showResults() {
+            const totalScore = answers.reduce((sum, answer) => sum + answer, 0);
+            const maxScore = questions.length * 4;
+            const percentage = Math.round((totalScore / maxScore) * 100);
+            
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('results-container').style.display = 'block';
+            
+            const scoreCircle = document.getElementById('score-circle');
+            const scoreDisplay = document.getElementById('score-display');
+            const resultText = document.getElementById('result-text');
+            const recommendations = document.getElementById('recommendations');
+            
+            scoreDisplay.textContent = `${percentage}%`;
+            
+            if (percentage <= 35) {
+                scoreCircle.className = 'score-circle score-low';
+                resultText.innerHTML = `
+                    <strong>Low Amplitude - You're doing well! 🌟</strong><br>
+                    Your responses suggest you're managing your mental health effectively and have good coping strategies in place.
+                `;
+                recommendations.innerHTML = `
+                    <h3>Keep up the great work:</h3>
+                    <ul>
+                        <li>Continue your current self-care practices</li>
+                        <li>Maintain your support networks</li>
+                        <li>Consider sharing your strategies with others</li>
+                        <li>Stay aware of changes in your mental state</li>
+                    </ul>
+                `;
+            } else if (percentage <= 65) {
+                scoreCircle.className = 'score-circle score-medium';
+                resultText.innerHTML = `
+                    <strong>Moderate Amplitude - Some areas to focus on 🧡</strong><br>
+                    You're managing reasonably well, but there are some areas where additional support or self-care might be beneficial.
+                `;
+                recommendations.innerHTML = `
+                    <h3>Consider these supportive steps:</h3>
+                    <ul>
+                        <li>Prioritize sleep hygiene and stress management</li>
+                        <li>Reach out to friends, family, or support groups</li>
+                        <li>Engage in activities that bring you joy</li>
+                        <li>Consider speaking with a counselor or therapist</li>
+                        <li>Practice mindfulness or relaxation techniques</li>
+                    </ul>
+                `;
+            } else {
+                scoreCircle.className = 'score-circle score-high';
+                resultText.innerHTML = `
+                    <strong>High Amplitude - Consider seeking support ❤️</strong><br>
+                    Your responses suggest you may be experiencing significant challenges. Professional support could be very helpful.
+                `;
+                recommendations.innerHTML = `
+                    <h3>Important next steps to consider:</h3>
+                    <ul>
+                        <li><strong>Reach out to a mental health professional</strong></li>
+                        <li>Contact your doctor or a counseling service</li>
+                        <li>Connect with trusted friends or family members</li>
+                        <li>Consider crisis support if you're in immediate distress</li>
+                        <li>Focus on basic self-care: sleep, nutrition, gentle movement</li>
+                    </ul>
+                `;
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            answers = [];
+            document.getElementById('quiz-container').style.display = 'block';
+            document.getElementById('results-container').style.display = 'none';
+            displayQuestion();
+        }
+
+        // Initialize the quiz
+        displayQuestion();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'988e0c4684de1192',t:'MTc1OTUxMTM3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

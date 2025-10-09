@@ -1,0 +1,231 @@
+.poppins-thin {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.poppins-extralight {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.poppins-light {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.poppins-black {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.poppins-thin-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.poppins-extralight-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.poppins-light-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.poppins-regular-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.poppins-medium-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.poppins-semibold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.poppins-bold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.poppins-extrabold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.poppins-black-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.aclonica-regular {
+  font-family: "Aclonica", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+body{
+    background-color: #FFD600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.idea img{
+    height: 100px;
+}
+
+.happy{
+    height: 346px;
+    width: 315px;
+}
+
+.mother{
+    height: 346px;
+    width: 315px;
+    margin-bottom: 0%;
+}
+
+/* .mhead{
+    font-size: 30px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.shead{
+    font-size: 13;
+}
+
+.sbtn{
+    border-radius: 40px;
+    border: 0cap;
+    height: 40px;
+    font-weight: 400;
+    width: 800px;
+    background-color: yellow;
+} */
+
+.card {
+  
+      background: #fff;
+      padding: 15px 10px;
+      border-radius: 10px;
+      border: 3px solid #000;
+      margin-top: 0px;
+      box-shadow: 3px 3px 0px #000;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+    
+    
+    .card h1 {
+      font-size: 50px;
+      -webkit-text-stroke: 2.5px black;
+      text-shadow:
+    2px 2px 0 black,
+   -2px 2px 0 black,
+    2px -2px 0 black,
+   -2px -2px 0 black;
+      color: #FFD500;
+      text-shadow: 3px 3px #000;
+      margin: 0;
+      line-height: 1.2;
+      font-family: "Aclonica", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      margin-top: 8px;
+      color: #333;
+      font-family: "Poppins", sans-serif;
+      font-weight: 300;
+      font-style: normal;
+      margin-top: 15px;
+    }
+
+.button {
+      margin-top: 20px;
+      background-color: #E1AD01;
+      border: none;
+      padding: 15px 90px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 3px 2px 0px #000;
+      transition: all 0.2s ease-in-out;
+      border: 3px solid #000;
+      
+    }
+
+    .button:hover {
+      background-color: #f5c32c;
+      transform: translate(0.5px,0.5px);
+    
+    }
+
+    .button:active {
+      background-color: #BFA02F;
+      transform: translate(2.5px,2.5px);
+    
+    }
+
+
+.footer {
+      font-size: 14px;
+      color: #222;
+      margin-top: 15px;
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
